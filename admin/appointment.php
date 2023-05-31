@@ -55,7 +55,7 @@
                                     <img src="../img/logo.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">ConfiguroWeb</p>
+                                    <p class="profile-title">Senati</p>
                                     <p class="profile-subtitle">configuroweb.com</p>
                                 </td>
                             </tr>
