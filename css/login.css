@@ -1,0 +1,117 @@
+
+body{
+    margin: 0;
+}
+
+html,
+body,
+#padre,
+#padre > div,
+#padre > div {
+  height: 100%;
+  width: 100%;
+  min-height: 600px;
+}
+
+/* #padre>div{
+    display: block;
+} */
+
+.fullPage{
+    background: #fff;
+    height: 100%;
+    display: flex;
+
+} 
+
+.brandingWrapper{
+    flex: 2 1;
+    /* height: 100%; */
+}
+
+.brandingWrapper .branding{
+    background-image: url(../img/sesionSenati.png); 
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 30%;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.contentWrapper{
+    flex: 1 1;
+    min-width: 360px;
+    padding: 30px 0;
+    text-align: center;
+    align-self: center;
+}
+.header{
+    flex: 1;
+    padding-bottom: 30px;
+}
+
+.contentWrapper .content{
+    flex: 2 1;
+}
+
+/* .content{
+    flex: 2;
+} */
+
+.login-form{
+    max-width: 300px;
+    margin: 0 auto!important;
+}
+
+.login-form h3{
+    font-size: 1.2rem;
+    color: grey;
+    padding-bottom: 20px; 
+}
+
+.header-text{
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+
+}
+
+.sub-text{
+    font-size: 18px;
+    color: rgb(138, 138, 138);
+}
+
+.form-label{
+    color: rgb(44, 44, 44);
+    text-align: left;
+    font-size: 14px;
+}
+.label-td{
+    text-align: left;
+    /* padding-top: 10px; */
+    padding-bottom: 20px;
+}
+
+.hover-link1{
+    font-weight: bold;
+}
+
+
+.hover-link1:hover{
+    opacity: 0.8;
+    transition: 0.5s;
+
+
+}.login-btn{
+    /*margin-top: 15px;*/
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* ESTILOS NUEVOS */
+h1{
+    font-size: 1.5rem;
+    color: #2a72f0;
+}
