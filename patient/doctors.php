@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
-    <title>Doctores</title>
+    <title>Personal</title>
     <style>
         .popup {
             animation: transitionIn-Y-bottom 0.5s;
@@ -85,7 +85,7 @@
             <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
                 <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -177,7 +177,7 @@
 
             <tr>
                 <td colspan="4" style="padding-top:10px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Doctores (<?php echo $list11->num_rows; ?>)</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Asesores (<?php echo $list11->num_rows; ?>)</p>
                 </td>
 
             </tr>
@@ -202,22 +202,20 @@
                                 <thead>
                                     <tr>
                                         <th class="table-headin">
-
-
-                                            Nombre Doctor
-
+                                            Nombre de Asesor
                                         </th>
+
                                         <th class="table-headin">
                                             Correo
                                         </th>
+
                                         <th class="table-headin">
-
-                                            Especialidad
-
+                                            Area
                                         </th>
-                                        <th class="table-headin">
 
+                                        <th class="table-headin">
                                             Eventos
+                                        </th>
 
                                     </tr>
                                 </thead>
@@ -254,13 +252,13 @@
                                             $spcil_array = $spcil_res->fetch_assoc();
                                             $spcil_name = $spcil_array["sname"];
                                             echo '<tr>
-                                        <td> &nbsp;' .
+                                        <td style="text-align: center;"> &nbsp;' .
                                                 substr($name, 0, 30)
                                                 . '</td>
-                                        <td>
+                                        <td style="text-align: center;">
                                         ' . substr($email, 0, 20) . '
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             ' . substr($spcil_name, 0, 20) . '
                                         </td>
 
@@ -393,7 +391,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Especialidad: </label>
+                                    <label for="spec" class="form-label">Area: </label>
                                     
                                 </td>
                             </tr>
@@ -425,7 +423,7 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2>¿Redireccionar a las Citas de este Doctor?</h2>
+                        <h2>¿Redireccionar a las Citas de este Asesor?</h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
                         Quieres ver Todas las citas de <br>(' . substr($name, 0, 40) . ').
@@ -436,11 +434,10 @@
                                 <input type="hidden" name="search" value="' . $name . '">
 
                                 
-                        <div style="display: flex;justify-content:center;margin-left:45%;margin-top:6%;;margin-bottom:6%;">
+                        <div style="display: flex; justify-content:center; margin-left:45%; margin-top:6%; margin-bottom:6%;">
                         
-                        <input type="submit"  value="Si" class="btn-primary btn"   >
-                        
-                        
+                        <input type="submit"  value="Si" class="btn-primary btn">
+                
                         </div>
                     </center>
             </div>
@@ -488,7 +485,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Doctor</p>
+                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Asesor</p>
                                         Doctor ID : ' . $id . ' (Auto Generado)<br><br>
                                         </td>
                                     </tr>
@@ -512,7 +509,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Nombre Doctor" value="' . $name . '" required><br>
+                                            <input type="text" name="name" class="input-text" placeholder="Nombre de Asesor" value="' . $name . '" required><br>
                                         </td>
                                         
                                     </tr>
@@ -539,7 +536,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Escoger Especialidad: (Actualidad ' . $spcil_name . ')</label>
+                                            <label for="spec" class="form-label">Escoger Area: (Actualidad ' . $spcil_name . ')</label>
                                             
                                         </td>
                                     </tr>

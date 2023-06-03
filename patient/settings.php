@@ -93,7 +93,7 @@
             <td class="menu-btn menu-icon-doctor">
                 <a href="doctors.php" class="non-style-link-menu">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>

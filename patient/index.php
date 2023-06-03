@@ -328,7 +328,7 @@
                                         </th>
 
                                         <th class="table-headin">
-                                            Doctor
+                                            Asesor
                                         </th>
                                         <th class="table-headin">
 
