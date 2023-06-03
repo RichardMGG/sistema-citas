@@ -55,8 +55,8 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">ConfiguroWeb</p>
-                                    <p class="profile-subtitle">configuroweb.com</p>
+                                    <p class="profile-title">Senati</p>
+                                    <p class="profile-subtitle">www.senati.edu.pe</p>
                                 </td>
                             </tr>
                             <tr>
@@ -80,7 +80,7 @@
             <td class="menu-btn menu-icon-doctor ">
                 <a href="doctors.php" class="non-style-link-menu ">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -106,7 +106,7 @@
         <td class="menu-btn menu-icon-patient  menu-active menu-icon-patient-active">
             <a href="patient.php" class="non-style-link-menu  non-style-link-menu-active">
                 <div>
-                    <p class="menu-text">Pacientes</p>
+                    <p class="menu-text">Alumnos</p>
             </a></div>
         </td>
     </tr>
@@ -127,7 +127,7 @@
 
                     <form action="" method="post" class="header-search">
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda Nombre de Paciente or Email" list="patient">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda Nombre de Alumno o Correo" list="patient">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="patient">';
@@ -173,7 +173,7 @@
 
             <tr>
                 <td colspan="4" style="padding-top:10px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Todos los Pacientes (<?php echo $list11->num_rows; ?>)</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Todos los Alumnos (<?php echo $list11->num_rows; ?>)</p>
                 </td>
 
             </tr>
@@ -262,19 +262,19 @@
                                             $tel = $row["ptel"];
 
                                             echo '<tr>
-                                        <td> &nbsp;' .
+                                        <td style="text-align:center;"> &nbsp;' .
                                                 substr($name, 0, 35)
                                                 . '</td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($nic, 0, 12) . '
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                             ' . substr($tel, 0, 10) . '
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($email, 0, 20) . '
                                          </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($dob, 0, 10) . '
                                         </td>
                                         <td >

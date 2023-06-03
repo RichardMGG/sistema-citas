@@ -56,7 +56,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Senati</p>
-                                    <p class="profile-subtitle">configuroweb.com</p>
+                                    <p class="profile-subtitle">www.senati.edu.pe</p>
                                 </td>
                             </tr>
                             <tr>
@@ -81,7 +81,7 @@
             <td class="menu-btn menu-icon-doctor ">
                 <a href="doctors.php" class="non-style-link-menu ">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -107,7 +107,7 @@
         <td class="menu-btn menu-icon-patient">
             <a href="patient.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Pacientes</p>
+                    <p class="menu-text">Alumnos</p>
             </a></div>
         </td>
     </tr>
@@ -184,11 +184,11 @@
 
                                 </td>
                                 <td width="5%" style="text-align: center;">
-                                    Doctor:
+                                    Asesor:
                                 </td>
                                 <td width="30%">
                                     <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;">
-                                        <option value="" disabled selected hidden>Escoge Nombre Doctor from the list</option><br />
+                                        <option value="" disabled selected hidden>Escoge Nombre un Asesor</option><br />
 
                                         <?php
 
@@ -268,41 +268,32 @@
                                 <thead>
                                     <tr>
                                         <th class="table-headin">
-                                            Nombre de Paciente
+                                            Nombre de Alumno
                                         </th>
-                                        <th class="table-headin">
 
+                                        <th class="table-headin">
                                             Número de cita
-
                                         </th>
 
-
                                         <th class="table-headin">
-                                            Doctor
+                                            Asesor
                                         </th>
+
                                         <th class="table-headin">
-
-
                                             Nombre Sesión
-
                                         </th>
 
-                                        <th class="table-headin" style="font-size:10px">
-
+                                        <th class="table-headin">
                                             Fecha y hora de la sesión
-
                                         </th>
 
                                         <th class="table-headin">
-
                                             Fecha de la Cita
-
                                         </th>
 
                                         <th class="table-headin">
-
                                             Eventos
-
+                                        </th>    
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -340,7 +331,7 @@
                                             $apponum = $row["apponum"];
                                             $appodate = $row["appodate"];
                                             echo '<tr >
-                                        <td style="font-weight:600;"> &nbsp;' .
+                                        <td style="text-align:center; font-weight:600;"> &nbsp;' .
 
                                                 substr($pname, 0, 25)
                                                 . '</td >
@@ -348,10 +339,10 @@
                                         ' . $apponum . '
                                         
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($docname, 0, 25) . '
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($title, 0, 15) . '
                                         </td>
                                         <td style="text-align:center;font-size:12px;">

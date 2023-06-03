@@ -126,7 +126,7 @@
 
                     <form action="doctors.php" method="post" class="header-search">
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre, Doctor o Correo" list="doctors">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre o Correo" list="doctors">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="doctors">';
@@ -286,18 +286,18 @@
                                         <table width="85%" class="sub-table scrolldown" border="0">
                                             <thead>
                                                 <tr>
-                                                    <th class="table-headin" style="font-size: 12px;">
+                                                    <th class="table-headin" >
 
                                                         Número de cita
 
                                                     </th>
                                                     <th class="table-headin">
-                                                        Nombre de Paciente
+                                                        Nombre de Alumno
                                                     </th>
                                                     <th class="table-headin">
 
 
-                                                        Doctor
+                                                        Asesor
 
                                                     </th>
                                                     <th class="table-headin">
@@ -351,17 +351,17 @@
                                                             
                                                         </td>
 
-                                                        <td style="font-weight:600;"> &nbsp;' .
+                                                        <td style="text-align:center;> &nbsp;' .
 
                                                             substr($pname, 0, 25)
                                                             . '</td >
-                                                        <td style="font-weight:600;"> &nbsp;' .
+                                                        <td style="text-align:center;"> &nbsp;' .
 
                                                             substr($docname, 0, 25)
                                                             . '</td >
                                                            
                                                         
-                                                        <td>
+                                                        <td style="text-align:center;">
                                                         ' . substr($title, 0, 15) . '
                                                         </td>
 
@@ -384,19 +384,14 @@
                                             <thead>
                                                 <tr>
                                                     <th class="table-headin">
-
-
                                                         Nombre Sesión
-
                                                     </th>
 
                                                     <th class="table-headin">
-                                                        Doctor
+                                                        Asesor
                                                     </th>
                                                     <th class="table-headin">
-
                                                         Fecha y Hora Cita
-
                                                     </th>
 
                                                 </tr>
@@ -433,10 +428,10 @@
                                                         $scheduletime = $row["scheduletime"];
                                                         $nop = $row["nop"];
                                                         echo '<tr>
-                                                        <td style="padding:20px;"> &nbsp;' .
+                                                        <td style="text-align:center; padding:20px;"> &nbsp;' .
                                                             substr($title, 0, 30)
                                                             . '</td>
-                                                        <td>
+                                                        <td style="text-align:center;">
                                                         ' . substr($docname, 0, 20) . '
                                                         </td>
                                                         <td style="text-align:center;">
