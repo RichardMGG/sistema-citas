@@ -94,7 +94,7 @@
             <td class="menu-btn menu-icon-doctor">
                 <a href="doctors.php" class="non-style-link-menu">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -166,7 +166,7 @@
                 <td>
                     <form action="" method="post" class="header-search">
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre, Doctor o Correo or Date (YYYY-MM-DD)" list="doctors" value="<?php echo $insertkey ?>">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre o Correo or Date (YYYY-MM-DD)" list="doctors" value="<?php echo $insertkey ?>">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="doctors">';

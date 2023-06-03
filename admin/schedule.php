@@ -55,8 +55,8 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">ConfiguroWeb</p>
-                                    <p class="profile-subtitle">configuroweb.com</p>
+                                    <p class="profile-title">Senati</p>
+                                    <p class="profile-subtitle">www.senati.edu.pe</p>
                                 </td>
                             </tr>
                             <tr>
@@ -81,7 +81,7 @@
             <td class="menu-btn menu-icon-doctor ">
                 <a href="doctors.php" class="non-style-link-menu ">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -107,7 +107,7 @@
         <td class="menu-btn menu-icon-patient">
             <a href="patient.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Pacientes</p>
+                    <p class="menu-text">Alumnos</p>
             </a></div>
         </td>
     </tr>
@@ -184,11 +184,11 @@
 
                                 </td>
                                 <td width="5%" style="text-align: center;">
-                                    Doctor:
+                                    Asesor:
                                 </td>
                                 <td width="30%">
                                     <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;">
-                                        <option value="" disabled selected hidden>Escoge Nombre Doctor from the list</option><br />
+                                        <option value="" disabled selected hidden>Escoge Nombre del Asesor</option><br />
 
                                         <?php
 
@@ -275,7 +275,7 @@
                                         </th>
 
                                         <th class="table-headin">
-                                            Doctor
+                                            Asesor
                                         </th>
                                         <th class="table-headin">
 
@@ -326,10 +326,10 @@
                                             $scheduletime = $row["scheduletime"];
                                             $nop = $row["nop"];
                                             echo '<tr>
-                                        <td> &nbsp;' .
+                                        <td style="text-align:center;"> &nbsp;' .
                                                 substr($title, 0, 30)
                                                 . '</td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($docname, 0, 20) . '
                                         </td>
                                         <td style="text-align:center;">
@@ -409,13 +409,13 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Selecicona Doctor: </label>
+                                    <label for="docid" class="form-label">Selecicona el Asesor: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <select name="docid" id="" class="box" >
-                                    <option value="" disabled selected hidden>Escoge Nombre Doctor from the list</option><br/>';
+                                    <option value="" disabled selected hidden>Escoge Nombre del Asesor</option><br/>';
 
 
             $list11 = $database->query("select  * from  doctor order by docname asc;");
@@ -435,7 +435,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Número de Pacientes/Números de Citas: </label>
+                                    <label for="nop" class="form-label">Número de Alumnos/Números de Citas: </label>
                                 </td>
                             </tr>
                             <tr>

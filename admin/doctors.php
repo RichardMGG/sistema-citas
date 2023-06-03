@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
-    <title>Doctores</title>
+    <title>Asesores</title>
     <style>
         .popup {
             animation: transitionIn-Y-bottom 0.5s;
@@ -55,8 +55,8 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">ConfiguroWeb</p>
-                                    <p class="profile-subtitle">configuroweb.com</p>
+                                    <p class="profile-title">Senati</p>
+                                    <p class="profile-subtitle">www.senati.edu.pe</p>
                                 </td>
                             </tr>
                             <tr>
@@ -81,7 +81,7 @@
             <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
                 <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active">
                     <div>
-                        <p class="menu-text">Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -107,7 +107,7 @@
         <td class="menu-btn menu-icon-patient">
             <a href="patient.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Pacientes</p>
+                    <p class="menu-text">Alumnos</p>
             </a></div>
         </td>
     </tr>
@@ -126,7 +126,7 @@
 
                     <form action="" method="post" class="header-search">
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre, Doctor o Correo" list="doctors">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre o Correo" list="doctors">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="doctors">';
@@ -171,7 +171,7 @@
 
             <tr>
                 <td colspan="2" style="padding-top:30px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Agregar Nuevo Doctor</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Agregar Nuevo Asesor</p>
                 </td>
                 <td colspan="2">
                     <a href="?action=add&id=none&error=0" class="non-style-link"><button class="login-btn btn-primary btn button-icon" style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">Agregar Nuevo</font></button>
@@ -180,7 +180,7 @@
             </tr>
             <tr>
                 <td colspan="4" style="padding-top:10px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Doctores (<?php echo $list11->num_rows; ?>)</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Asesores (<?php echo $list11->num_rows; ?>)</p>
                 </td>
 
             </tr>
@@ -207,7 +207,7 @@
                                         <th class="table-headin">
 
 
-                                            Nombre Doctor
+                                            Nombre
 
                                         </th>
                                         <th class="table-headin">
@@ -215,7 +215,7 @@
                                         </th>
                                         <th class="table-headin">
 
-                                            Especialidad
+                                            Area
 
                                         </th>
                                         <th class="table-headin">
@@ -257,13 +257,13 @@
                                             $spcil_array = $spcil_res->fetch_assoc();
                                             $spcil_name = $spcil_array["sname"];
                                             echo '<tr>
-                                        <td> &nbsp;' .
+                                        <td style="text-align:center;"> &nbsp;' .
                                                 substr($name, 0, 30)
                                                 . '</td>
-                                        <td>
+                                        <td style="text-align:center;">
                                         ' . substr($email, 0, 20) . '
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                             ' . substr($spcil_name, 0, 20) . '
                                         </td>
 

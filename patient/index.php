@@ -95,7 +95,7 @@
             <td class="menu-btn menu-icon-doctor">
                 <a href="doctors.php" class="non-style-link-menu">
                     <div>
-                        <p class="menu-text">Todos los Doctores</p>
+                        <p class="menu-text">Personal</p>
                 </a>
     </div>
     </td>
@@ -178,15 +178,15 @@
                                     <h3>Bienvenido!</h3>
                                     <h1><?php echo $username  ?>.</h1>
                                     <p>¿No sabes como hacer el proceso? Puedes saltar directamente a la sección de
-                                        <a href="doctors.php" class="non-style-link"><b>"Todos los Doctores"</b></a> o verificar la sección de tus
+                                        <a href="doctors.php" class="non-style-link"><b>"Todos los asesores"</b></a> o verificar la sección de tus
                                         <a href="schedule.php" class="non-style-link"><b>"Citas"</b> </a><br>
-                                        Puedes hacer un seguimiento de tu historial de citas pasadas y futuras. Infórmate también de la hora prevista de llegada de tu médico.<br><br>
+                                        Puedes hacer un seguimiento de tu historial de citas pasadas y futuras. Infórmate también de la hora prevista de llegada de tu asesor.<br><br>
                                     </p>
 
-                                    <h3>Puedes buscar tu doctor aquí</h3>
+                                    <h3>Puedes buscar tu asesor aquí</h3>
                                     <form action="schedule.php" method="post" style="display: flex">
 
-                                        <input type="search" name="search" class="input-text " placeholder="Busca tu doctor aquí" list="doctors" style="width:45%;">&nbsp;&nbsp;
+                                        <input type="search" name="search" class="input-text " placeholder="Busca tu asesor aquí" list="doctors" style="width:45%;">&nbsp;&nbsp;
 
                                         <?php
                                         echo '<datalist id="doctors">';
@@ -241,7 +241,7 @@
                                                     <?php echo $doctorrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Doctores &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
                                             <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
@@ -254,7 +254,7 @@
                                                     <?php echo $patientrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Pacientes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
                                             <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
