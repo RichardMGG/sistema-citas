@@ -119,7 +119,7 @@
         <td class="menu-btn menu-icon-patient">
             <a href="patient.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Mis Pacientes</p>
+                    <p class="menu-text">Mis Alumnos</p>
             </a></div>
         </td>
     </tr>
@@ -221,10 +221,10 @@
                                                     <?php echo $doctorrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Doctores &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/people-fill-hover.svg');"></div>
                                         </div>
                                     </td>
                                     <td style="width: 25%;">
@@ -234,10 +234,10 @@
                                                     <?php echo $patientrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Todos los Pacientes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Todos los Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/person-student-hover.svg');"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -267,7 +267,7 @@
                                                     Sesiones Hoy
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/clipboard2-data-hover.svg');"></div>
                                         </div>
                                     </td>
 

@@ -197,7 +197,7 @@
                                                 Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </div>
                                         </div>
-                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/people-fill-hover.svg');"></div>
                                     </div>
                                 </td>
                                 <td style="width: 25%;">
@@ -210,7 +210,7 @@
                                                 Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </div>
                                         </div>
-                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/person-student-hover.svg');"></div>
                                     </div>
                                 </td>
                                 <td style="width: 25%;">
@@ -236,7 +236,7 @@
                                                 Sesiones Hoy
                                             </div>
                                         </div>
-                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
+                                        <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/clipboard2-data-hover.svg');"></div>
                                     </div>
                                 </td>
 

@@ -235,7 +235,7 @@
                                 <thead>
                                     <tr>
                                         <th class="table-headin">
-                                            Nombre de Paciente
+                                            Nombre de Alumno
                                         </th>
                                         <th class="table-headin">
 

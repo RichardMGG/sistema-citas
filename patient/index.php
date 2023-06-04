@@ -91,15 +91,17 @@
         </div></a>
         </td>
         </tr>
-        <tr class="menu-row">
-            <td class="menu-btn menu-icon-doctor">
-                <a href="doctors.php" class="non-style-link-menu">
-                    <div>
-                        <p class="menu-text">Personal</p>
-                </a>
-    </div>
-    </td>
+
+    <tr class="menu-row">
+        <td class="menu-btn menu-icon-doctor">
+            <a href="doctors.php" class="non-style-link-menu">
+            <div>
+                <p class="menu-text">Personal</p>
+            </div>
+        </a>
+        </td>
     </tr>
+
 
     <tr class="menu-row">
         <td class="menu-btn menu-icon-session">
@@ -244,7 +246,7 @@
                                                     Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/people-fill-hover.svg');"></div>
                                         </div>
                                     </td>
                                     <td style="width: 25%;">
@@ -257,7 +259,7 @@
                                                     Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/person-student-hover.svg');"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -287,7 +289,7 @@
                                                     Sesiones de Hoy
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/clipboard2-data-hover.svg');"></div>
                                         </div>
                                     </td>
 
