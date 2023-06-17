@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
-    <title>Pacientes</title>
+    <title>Alumnos</title>
     <style>
         .popup {
             animation: transitionIn-Y-bottom 0.5s;
@@ -172,8 +172,13 @@
 
 
             <tr>
-                <td colspan="4" style="padding-top:10px;">
+                <td colspan="2" style="padding-top:30px;">
                     <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Todos los Alumnos (<?php echo $list11->num_rows; ?>)</p>
+                </td>
+
+                <td colspan="2">
+                    <a href="?action=add&id=none&error=0" class="non-style-link"><button class="login-btn btn-primary btn button-icon" style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">Agregar Nuevo Alumno</font></button>
+                    </a>
                 </td>
 
             </tr>
@@ -336,7 +341,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">ID Paciente: </label>
+                                    <label for="name" class="form-label">ID Alumno: </label>
                                 </td>
                             </tr>
                             <tr>

@@ -273,7 +273,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="?action=view&id=' . $docid . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Ver</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id=' . $docid . '&name=' . $name . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Remove</font></button></a>
+                                       <a href="?action=drop&id=' . $docid . '&name=' . $name . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Eliminar</font></button></a>
                                         </div>
                                         </td>
                                     </tr>';
@@ -450,7 +450,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Agregar Nuevo Doctor.</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Agregar Nuevo Asesor.</p><br><br>
                                 </td>
                             </tr>
                             
@@ -462,7 +462,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="name" class="input-text" placeholder="Nombre Doctor" required><br>
+                                    <input type="text" name="name" class="input-text" placeholder="Nombre Asesor" required><br>
                                 </td>
                                 
                             </tr>
@@ -547,7 +547,7 @@
                                 <td colspan="2">
                                     <input type="reset" value="Resetear" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
-                                    <input type="submit" value="Add" class="login-btn btn-primary btn">
+                                    <input type="submit" value="Resgistrar" class="login-btn btn-primary btn">
                                 </td>
                 
                             </tr>

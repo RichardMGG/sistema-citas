@@ -396,7 +396,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">ID Paciente: </label>
+                                    <label for="name" class="form-label">ID Alumno: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -489,6 +489,8 @@
             </div>
             ';
     };
+
+    
 
     ?>
     </div>
