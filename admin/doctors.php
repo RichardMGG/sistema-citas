@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.ico">
 
     <title>Asesores</title>
     <style>
@@ -341,7 +341,7 @@
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
-                            ConfiguroWeb<br>
+                            Asesor<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
@@ -397,7 +397,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Especialidad: </label>
+                                    <label for="spec" class="form-label">Area: </label>
                                     
                                 </td>
                             </tr>
@@ -457,12 +457,25 @@
                             <tr>
                                 <form action="add-new.php" method="POST" class="add-new-form">
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Nombre: </label>
+                                    <label for="nic" class="form-label">DNI: </label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="label-td" colspan="2">
+                                    <input type="text" name="nic" id="nic" class="input-text" placeholder="Número de Documento" required style="width: 50%; display: inline;">
+                                    <input type="button" id="consultaReniec" name="consultaReniec" value="Reniec" class="btn-primary btn">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="label-td" colspan="2">
+                                    <label for="name" class="form-label">Nombre: </label>   
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="name" class="input-text" placeholder="Nombre Asesor" required><br>
+                                    <input type="text" name="name" id="name" class="input-text" placeholder="Nombre Asesor" required><br>
                                 </td>
                                 
                             </tr>
@@ -476,16 +489,8 @@
                                     <input type="email" name="email" class="input-text" placeholder="Email Address" required><br>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">DNI: </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <input type="text" name="nic" class="input-text" placeholder="Número de Documento" required><br>
-                                </td>
-                            </tr>
+                            
+
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <label for="Tele" class="form-label">Teléfono: </label>
@@ -773,4 +778,5 @@
 
 </body>
 
+<script src="../js/api.js"></script>
 </html>
