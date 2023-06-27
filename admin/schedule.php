@@ -79,7 +79,7 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor ">
-                <a href="doctors.php" class="non-style-link-menu ">
+                <a href="adviser.php" class="non-style-link-menu ">
                     <div>
                         <p class="menu-text">Personal</p>
                 </a>
@@ -192,7 +192,7 @@
 
                                         <?php
 
-                                        $list11 = $database->query("select  * from  doctor order by docname asc;");
+                                        $list11 = $database->query("select  * from  adviser order by docname asc;");
 
                                         for ($y = 0; $y < $list11->num_rows; $y++) {
                                             $row00 = $list11->fetch_assoc();
@@ -232,11 +232,11 @@
                 $sqlpt2 = "";
                 if (!empty($_POST["docid"])) {
                     $docid = $_POST["docid"];
-                    $sqlpt2 = " doctor.docid=$docid ";
+                    $sqlpt2 = " adviser.docid=$docid ";
                 }
                 //echo $sqlpt2;
                 //echo $sqlpt1;
-                $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid ";
+                $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid ";
                 $sqllist = array($sqlpt1, $sqlpt2);
                 $sqlkeywords = array(" where ", " and ");
                 $key2 = 0;
@@ -253,7 +253,7 @@
 
                 //
             } else {
-                $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  order by schedule.scheduledate desc";
+                $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid  order by schedule.scheduledate desc";
             }
 
 
@@ -418,7 +418,7 @@
                                     <option value="" disabled selected hidden>Escoge Nombre del Asesor</option><br/>';
 
 
-            $list11 = $database->query("select  * from  doctor order by docname asc;");
+            $list11 = $database->query("select  * from  adviser order by docname asc;");
 
             for ($y = 0; $y < $list11->num_rows; $y++) {
                 $row00 = $list11->fetch_assoc();
@@ -527,7 +527,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where  schedule.scheduleid=$id";
+            $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid  where  schedule.scheduleid=$id";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $docname = $row["docname"];
@@ -540,7 +540,7 @@
             $nop = $row['nop'];
 
 
-            $sqlmain12 = "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
+            $sqlmain12 = "select * from appointment inner join student on student.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
             $result12 = $database->query($sqlmain12);
             echo '
             <div id="popup1" class="overlay">
@@ -575,7 +575,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Doctor de esta sesión: </label>
+                                    <label for="Email" class="form-label">Asesor de esta sesión: </label>
                                 </td>
                             </tr>
                             <tr>

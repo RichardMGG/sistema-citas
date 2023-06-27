@@ -42,7 +42,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where pemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["pid"];
     $username = $userfetch["pname"];
@@ -135,7 +135,7 @@
 
                         <?php
                         echo '<datalist id="doctors">';
-                        $list11 = $database->query("select  docname,docemail from  doctor;");
+                        $list11 = $database->query("select  docname,docemail from  adviser;");
 
                         for ($y = 0; $y < $list11->num_rows; $y++) {
                             $row00 = $list11->fetch_assoc();
@@ -185,9 +185,9 @@
             if ($_POST) {
                 $keyword = $_POST["search"];
 
-                $sqlmain = "select * from doctor where docemail='$keyword' or docname='$keyword' or docname like '$keyword%' or docname like '%$keyword' or docname like '%$keyword%'";
+                $sqlmain = "select * from adviser where docemail='$keyword' or docname='$keyword' or docname like '$keyword%' or docname like '%$keyword' or docname like '%$keyword%'";
             } else {
-                $sqlmain = "select * from doctor order by docid desc";
+                $sqlmain = "select * from adviser order by docid desc";
             }
 
 
@@ -235,7 +235,7 @@
                                     
                                     <br>
                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">No pudimos encontrar nada relacionado con tus términos de búsqueda!</p>
-                                    <a class="non-style-link" href="doctors.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los doctores &nbsp;</font></button>
+                                    <a class="non-style-link" href="advisers.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los doctores &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -316,7 +316,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
@@ -445,7 +445,7 @@
             ';
         }
     } elseif ($action == 'edit') {
-        $sqlmain = "select * from doctor where docid='$id'";
+        $sqlmain = "select * from adviser where docid='$id'";
         $result = $database->query($sqlmain);
         $row = $result->fetch_assoc();
         $name = $row["docname"];

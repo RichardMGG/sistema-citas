@@ -54,7 +54,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from adviser where docemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["docid"];
     $username = $userfetch["docname"];
@@ -158,8 +158,8 @@
                         echo $today;
 
 
-                        $patientrow = $database->query("select  * from  patient;");
-                        $doctorrow = $database->query("select  * from  doctor;");
+                        $studentrow = $database->query("select  * from  student;");
+                        $adviserrow = $database->query("select  * from  adviser;");
                         $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
                         $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
 
@@ -218,7 +218,7 @@
                                         <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex">
                                             <div>
                                                 <div class="h1-dashboard">
-                                                    <?php echo $doctorrow->num_rows  ?>
+                                                    <?php echo $adviserrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
                                                     Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -231,7 +231,7 @@
                                         <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex;">
                                             <div>
                                                 <div class="h1-dashboard">
-                                                    <?php echo $patientrow->num_rows  ?>
+                                                    <?php echo $studentrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
                                                     Todos los Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -316,7 +316,7 @@
 
                                     <?php
                                     $nextweek = date("Y-m-d", strtotime("+1 week"));
-                                    $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                    $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
                                     $result = $database->query($sqlmain);
 
                                     if ($result->num_rows == 0) {

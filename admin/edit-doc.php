@@ -22,8 +22,8 @@ if ($_POST) {
 
     if ($password == $cpassword) {
         $error = '3';
-        $result = $database->query("Selecicona Doctor.docid from doctor inner join webuser on doctor.docemail=webuser.email where webuser.email='$email';");
-        //$resultqq= $database->query("select * from doctor where docid='$id';");
+        $result = $database->query("select adviser.docid from adviser inner join webuser on adviser.docemail=webuser.email where webuser.email='$email';");
+        //$resultqq= $database->query("select * from adviser where docid='$id';");
         if ($result->num_rows == 1) {
             $id2 = $result->fetch_assoc()["docid"];
         } else {
@@ -33,14 +33,14 @@ if ($_POST) {
         echo $id2 . "jdfjdfdh";
         if ($id2 != $id) {
             $error = '1';
-            //$resultqq1= $database->query("select * from doctor where docemail='$email';");
+            //$resultqq1= $database->query("select * from adviser where docemail='$email';");
             //$did= $resultqq1->fetch_assoc()["docid"];
             //if($resultqq1->num_rows==1){
 
         } else {
 
-            //$sql1="insert into doctor(docemail,docname,docpassword,docnic,doctel,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
-            $sql1 = "update doctor set docemail='$email',docname='$name',docpassword='$password',docnic='$nic',doctel='$tele',specialties=$spec where docid=$id ;";
+            //$sql1="insert into adviser(docemail,docname,docpassword,docnic,doctel,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
+            $sql1 = "update adviser set docemail='$email',docname='$name',docpassword='$password',docnic='$nic',doctel='$tele',specialties=$spec where docid=$id ;";
             $database->query($sql1);
 
             $sql1 = "update webuser set email='$email' where email='$oldemail' ;";
@@ -58,7 +58,7 @@ if ($_POST) {
 }
 
 
-header("location: doctors.php?action=edit&error=" . $error . "&id=" . $id);
+header("location: adviser.php?action=edit&error=" . $error . "&id=" . $id);
 ?>
 
 

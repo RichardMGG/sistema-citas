@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Doctor</title>
+    <title>adviser</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -56,7 +56,7 @@
                 $error='1';
             }else{
 
-                $sql1="insert into doctor(docemail,docname,docpassword,docnic,doctel,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
+                $sql1="insert into adviser(docemail,docname,docpassword,docnic,doctel,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
                 $sql2="insert into webuser values('$email','d')";
                 $database->query($sql1);
                 $database->query($sql2);
@@ -82,7 +82,7 @@
     }
     
 
-    header("location: doctors.php?action=add&error=".$error);
+    header("location: advisers.php?action=add&error=".$error);
     ?>
     
    

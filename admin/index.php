@@ -57,7 +57,7 @@
                         <table border="0" class="profile-container">
                             <tr>
                                 <td width="30%" style="padding-left:20px">
-                                    <img src="../img/favicon.ico" alt="" width="100%" style="border-radius:50%">
+                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Senati</p>
@@ -83,7 +83,7 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor ">
-                <a href="doctors.php" class="non-style-link-menu ">
+                <a href="adviser.php" class="non-style-link-menu ">
                     <div>
                         <p class="menu-text">Personal</p>
                 </a>
@@ -124,13 +124,13 @@
 
                 <td colspan="2" class="nav-bar">
 
-                    <form action="doctors.php" method="post" class="header-search">
+                    <form action="adviser.php" method="post" class="header-search">
 
                         <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda por Nombre o Correo" list="doctors">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="doctors">';
-                        $list11 = $database->query("select  docname,docemail from  doctor;");
+                        $list11 = $database->query("select  docname,docemail from  adviser;");
 
                         for ($y = 0; $y < $list11->num_rows; $y++) {
                             $row00 = $list11->fetch_assoc();
@@ -161,8 +161,8 @@
                         echo $today;
 
 
-                        $patientrow = $database->query("select  * from  patient;");
-                        $doctorrow = $database->query("select  * from  doctor;");
+                        $studentrow = $database->query("select  * from  student;");
+                        $adviserrow = $database->query("select  * from  adviser;");
                         $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
                         $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
 
@@ -191,7 +191,7 @@
                                     <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex">
                                         <div>
                                             <div class="h1-dashboard">
-                                                <?php echo $doctorrow->num_rows  ?>
+                                                <?php echo $adviserrow->num_rows  ?>
                                             </div><br>
                                             <div class="h3-dashboard">
                                                 Personal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -204,7 +204,7 @@
                                     <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex;">
                                         <div>
                                             <div class="h1-dashboard">
-                                                <?php echo $patientrow->num_rows  ?>
+                                                <?php echo $studentrow->num_rows  ?>
                                             </div><br>
                                             <div class="h3-dashboard">
                                                 Alumnos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -312,7 +312,7 @@
 
                                                 <?php
                                                 $nextweek = date("Y-m-d", strtotime("+1 week"));
-                                                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,adviser.docname,student.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.pid=appointment.pid inner join adviser on schedule.docid=adviser.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
 
                                                 $result = $database->query($sqlmain);
 
@@ -400,7 +400,7 @@
 
                                                 <?php
                                                 $nextweek = date("Y-m-d", strtotime("+1 week"));
-                                                $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                                $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
                                                 $result = $database->query($sqlmain);
 
                                                 if ($result->num_rows == 0) {

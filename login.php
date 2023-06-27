@@ -50,11 +50,11 @@
         if ($result->num_rows == 1) {
             $utype = $result->fetch_assoc()['usertype'];
             if ($utype == 'p') {
-                $checker = $database->query("select * from patient where pemail='$email' and ppassword='$password'");
+                $checker = $database->query("select * from student where pemail='$email' and ppassword='$password'");
                 if ($checker->num_rows == 1) {
 
 
-                    //   Patient dashbord
+                    //   student dashbord
                     $_SESSION['user'] = $email;
                     $_SESSION['usertype'] = 'p';
 
@@ -76,11 +76,11 @@
                     $error = '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Credenciales incorrectas: correo electrónico o contraseña no válidos</label>';
                 }
             } elseif ($utype == 'd') {
-                $checker = $database->query("select * from doctor where docemail='$email' and docpassword='$password'");
+                $checker = $database->query("select * from adviser where docemail='$email' and docpassword='$password'");
                 if ($checker->num_rows == 1) {
 
 
-                    //   doctor dashbord
+                    //   Asesor dashbord
                     $_SESSION['user'] = $email;
                     $_SESSION['usertype'] = 'd';
                     header('location: doctor/index.php');

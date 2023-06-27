@@ -24,8 +24,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if (isset($_SESSION["user"])) {
@@ -41,7 +39,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where pemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["pid"];
     $username = $userfetch["pname"];
@@ -145,8 +143,8 @@
 
                         <?php
                         echo '<datalist id="doctors">';
-                        $list11 = $database->query("select DISTINCT * from  doctor;");
-                        $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
+                        $list11 = $database->query("select DISTINCT * from  adviser;");
+                        $list12 = $database->query("select title, MAX(scheduleid) as max_scheduleid from schedule GROUP BY title;");
 
 
 
@@ -225,7 +223,7 @@
 
                                             $id = $_GET["id"];
 
-                                            $sqlmain = "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduleid=$id  order by schedule.scheduledate desc";
+                                            $sqlmain = "select * from schedule inner join adviser on schedule.docid=adviser.docid where schedule.scheduleid=$id  order by schedule.scheduledate desc";
 
                                             //echo $sqlmain;
                                             $result = $database->query($sqlmain);
@@ -323,13 +321,9 @@
                 </td>
             </tr>
 
-
-
         </table>
     </div>
     </div>
-
-
 
     </div>
 

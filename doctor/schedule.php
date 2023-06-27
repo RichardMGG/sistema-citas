@@ -43,7 +43,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from adviser where docemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["docid"];
     $username = $userfetch["docname"];
@@ -197,7 +197,7 @@
 
             <?php
 
-            $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid where doctor.docid=$userid ";
+            $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid where adviser.docid=$userid ";
             if ($_POST) {
                 //print_r($_POST);
                 $sqlpt1 = "";
@@ -338,7 +338,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where  schedule.scheduleid=$id";
+            $sqlmain = "select schedule.scheduleid,schedule.title,adviser.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join adviser on schedule.docid=adviser.docid  where  schedule.scheduleid=$id";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $docname = $row["docname"];
@@ -351,7 +351,7 @@
             $nop = $row['nop'];
 
 
-            $sqlmain12 = "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
+            $sqlmain12 = "select * from appointment inner join student on student.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
             $result12 = $database->query($sqlmain12);
             echo '
             <div id="popup1" class="overlay">

@@ -50,7 +50,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from adviser where docemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["docid"];
     $username = $userfetch["docname"];
@@ -157,8 +157,8 @@
                         echo $today;
 
 
-                        $patientrow = $database->query("select  * from  patient;");
-                        $doctorrow = $database->query("select  * from  doctor;");
+                        $studentrow = $database->query("select  * from  student;");
+                        $adviserrow = $database->query("select  * from  adviser;");
                         $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
                         $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
 
@@ -288,7 +288,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
@@ -390,7 +390,7 @@
             </div>
             ';
         } elseif ($action == 'edit') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];

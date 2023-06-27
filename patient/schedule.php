@@ -42,7 +42,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where pemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["pid"];
     $username = $userfetch["pname"];
@@ -130,7 +130,7 @@
     </div>
     <?php
 
-    $sqlmain = "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today'  order by schedule.scheduledate asc";
+    $sqlmain = "select * from schedule inner join adviser on schedule.docid=adviser.docid where schedule.scheduledate>='$today'  order by schedule.scheduledate asc";
     $sqlpt1 = "";
     $insertkey = "";
     $q = '';
@@ -141,7 +141,7 @@
         if (!empty($_POST["search"])) {
 
             $keyword = $_POST["search"];
-            $sqlmain = "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today' and (doctor.docname='$keyword' or doctor.docname like '$keyword%' or doctor.docname like '%$keyword' or doctor.docname like '%$keyword%' or schedule.title='$keyword' or schedule.title like '$keyword%' or schedule.title like '%$keyword' or schedule.title like '%$keyword%' or schedule.scheduledate like '$keyword%' or schedule.scheduledate like '%$keyword' or schedule.scheduledate like '%$keyword%' or schedule.scheduledate='$keyword' )  order by schedule.scheduledate asc";
+            $sqlmain = "select * from schedule inner join adviser on schedule.docid=adviser.docid where schedule.scheduledate>='$today' and (adviser.docname='$keyword' or adviser.docname like '$keyword%' or adviser.docname like '%$keyword' or adviser.docname like '%$keyword%' or schedule.title='$keyword' or schedule.title like '$keyword%' or schedule.title like '%$keyword' or schedule.title like '%$keyword%' or schedule.scheduledate like '$keyword%' or schedule.scheduledate like '%$keyword' or schedule.scheduledate like '%$keyword%' or schedule.scheduledate='$keyword' )  order by schedule.scheduledate asc";
             //echo $sqlmain;
             $insertkey = $keyword;
             $searchtype = "Resultados de búsqueda: ";
@@ -170,12 +170,8 @@
 
                         <?php
                         echo '<datalist id="doctors">';
-                        $list11 = $database->query("select DISTINCT * from  doctor;");
-                        $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
-
-
-
-
+                        $list11 = $database->query("select DISTINCT * from  adviser;");
+                        $list12 = $database->query("select title, MAX(scheduleid) as max_scheduleid from schedule GROUP BY title;");
 
                         for ($y = 0; $y < $list11->num_rows; $y++) {
                             $row00 = $list11->fetch_assoc();

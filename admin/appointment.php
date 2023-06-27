@@ -79,7 +79,7 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor ">
-                <a href="doctors.php" class="non-style-link-menu ">
+                <a href="adviser.php" class="non-style-link-menu ">
                     <div>
                         <p class="menu-text">Personal</p>
                 </a>
@@ -192,7 +192,7 @@
 
                                         <?php
 
-                                        $list11 = $database->query("select  * from  doctor order by docname asc;");
+                                        $list11 = $database->query("select  * from  adviser order by docname asc;");
 
                                         for ($y = 0; $y < $list11->num_rows; $y++) {
                                             $row00 = $list11->fetch_assoc();
@@ -232,11 +232,11 @@
                 $sqlpt2 = "";
                 if (!empty($_POST["docid"])) {
                     $docid = $_POST["docid"];
-                    $sqlpt2 = " doctor.docid=$docid ";
+                    $sqlpt2 = " adviser.docid=$docid ";
                 }
                 //echo $sqlpt2;
                 //echo $sqlpt1;
-                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid";
+                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,adviser.docname,student.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.pid=appointment.pid inner join adviser on schedule.docid=adviser.docid";
                 $sqllist = array($sqlpt1, $sqlpt2);
                 $sqlkeywords = array(" where ", " and ");
                 $key2 = 0;
@@ -253,7 +253,7 @@
 
                 //
             } else {
-                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  order by schedule.scheduledate desc";
+                $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,adviser.docname,student.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.pid=appointment.pid inner join adviser on schedule.docid=adviser.docid  order by schedule.scheduledate desc";
             }
 
 
@@ -423,16 +423,16 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Selecicona Doctor: </label>
+                                    <label for="docid" class="form-label">Selecicona Asesor: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <select name="docid" id="" class="box" >
-                                    <option value="" disabled selected hidden>Escoge Nombre Doctor from the list</option><br/>';
+                                    <option value="" disabled selected hidden>Escoge Nombre Asesor from the list</option><br/>';
 
 
-            $list11 = $database->query("select  * from  doctor;");
+            $list11 = $database->query("select  * from  adviser;");
 
             for ($y = 0; $y < $list11->num_rows; $y++) {
                 $row00 = $list11->fetch_assoc();
@@ -545,7 +545,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
@@ -562,7 +562,7 @@
                     <div class="popup">
                     <center>
                         <h2></h2>
-                        <a class="close" href="doctors.php">&times;</a>
+                        <a class="close" href="adviser.php">&times;</a>
                         <div class="content">
                             ConfiguroWeb<br>
                             
@@ -631,7 +631,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                    <a href="adviser.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                 
                                     
                                 </td>
