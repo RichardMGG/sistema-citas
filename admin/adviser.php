@@ -79,7 +79,7 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active">
+                <a href="adviser.php" class="non-style-link-menu non-style-link-menu-active">
                     <div>
                         <p class="menu-text">Personal</p>
                 </a>
@@ -130,7 +130,7 @@
 
                         <?php
                         echo '<datalist id="doctors">';
-                        $list11 = $database->query("select  docname,docemail from  doctor;");
+                        $list11 = $database->query("select  docname,docemail from  adviser;");
 
                         for ($y = 0; $y < $list11->num_rows; $y++) {
                             $row00 = $list11->fetch_assoc();
@@ -188,9 +188,9 @@
             if ($_POST) {
                 $keyword = $_POST["search"];
 
-                $sqlmain = "select * from doctor where docemail='$keyword' or docname='$keyword' or docname like '$keyword%' or docname like '%$keyword' or docname like '%$keyword%'";
+                $sqlmain = "select * from adviser where docemail='$keyword' or docname='$keyword' or docname like '$keyword%' or docname like '%$keyword' or docname like '%$keyword%'";
             } else {
-                $sqlmain = "select * from doctor order by docid desc";
+                $sqlmain = "select * from adviser order by docid desc";
             }
 
 
@@ -240,7 +240,7 @@
                                     
                                     <br>
                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="doctors.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los doctores &nbsp;</font></button>
+                                    <a class="non-style-link" href="adviser.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los Asesores &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -307,14 +307,14 @@
                     <div class="popup">
                     <center>
                         <h2>Estás segur@?</h2>
-                        <a class="close" href="doctors.php">&times;</a>
+                        <a class="close" href="adviser.php">&times;</a>
                         <div class="content">
                             Deseas borrar este registro<br>(' . substr($nameget, 0, 40) . ').
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
                         <a href="delete-doctor.php?id=' . $id . '" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Si&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
+                        <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
 
                         </div>
                     </center>
@@ -322,7 +322,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
@@ -339,7 +339,7 @@
                     <div class="popup">
                     <center>
                         <h2></h2>
-                        <a class="close" href="doctors.php">&times;</a>
+                        <a class="close" href="adviser.php">&times;</a>
                         <div class="content">
                             Asesor<br>
                             
@@ -408,7 +408,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                    <a href="adviser.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                 
                                     
                                 </td>
@@ -439,7 +439,7 @@
                     <div class="popup">
                     <center>
                     
-                        <a class="close" href="doctors.php">&times;</a> 
+                        <a class="close" href="adviser.php">&times;</a> 
                         <div style="display: flex;justify-content: center;">
                         <div class="abc">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -574,14 +574,14 @@
                             <center>
                             <br><br><br><br>
                                 <h2>Nuevo Registro Añadido Exitosamente</h2>
-                                <a class="close" href="doctors.php">&times;</a>
+                                <a class="close" href="adviser.php">&times;</a>
                                 <div class="content">
                                     
                                     
                                 </div>
                                 <div style="display: flex;justify-content: center;">
                                 
-                                <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
+                                <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
 
                                 </div>
                                 <br><br>
@@ -591,7 +591,7 @@
         ';
             }
         } elseif ($action == 'edit') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
@@ -620,7 +620,7 @@
                             <div class="popup">
                             <center>
                             
-                                <a class="close" href="doctors.php">&times;</a> 
+                                <a class="close" href="adviser.php">&times;</a> 
                                 <div style="display: flex;justify-content: center;">
                                 <div class="abc">
                                 <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -631,8 +631,8 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Doctor</p>
-                                        Doctor ID : ' . $id . ' (Auto Generado)<br><br>
+                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de </p>
+                                        Asesor ID : ' . $id . ' (Auto Generado)<br><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -656,7 +656,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Nombre Doctor" value="' . $name . '" required><br>
+                                            <input type="text" name="name" class="input-text" placeholder="Nombre Asesor" value="' . $name . '" required><br>
                                         </td>
                                         
                                     </tr>
@@ -754,14 +754,14 @@
                         <center>
                         <br><br><br><br>
                             <h2>Edición Exitosa</h2>
-                            <a class="close" href="doctors.php">&times;</a>
+                            <a class="close" href="adviser.php">&times;</a>
                             <div class="content">
                                 
                                 
                             </div>
                             <div style="display: flex;justify-content: center;">
                             
-                            <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
+                            <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
 
                             </div>
                             <br><br>

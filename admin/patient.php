@@ -78,7 +78,7 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor ">
-                <a href="doctors.php" class="non-style-link-menu ">
+                <a href="adviser.php" class="non-style-link-menu ">
                     <div>
                         <p class="menu-text">Personal</p>
                 </a>
@@ -131,7 +131,7 @@
 
                         <?php
                         echo '<datalist id="patient">';
-                        $list11 = $database->query("select  pname,pemail from patient;");
+                        $list11 = $database->query("select  pname,pemail from student;");
 
                         for ($y = 0; $y < $list11->num_rows; $y++) {
                             $row00 = $list11->fetch_assoc();
@@ -186,9 +186,9 @@
             if ($_POST) {
                 $keyword = $_POST["search"];
 
-                $sqlmain = "select * from patient where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
+                $sqlmain = "select * from student where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
             } else {
-                $sqlmain = "select * from patient order by pid desc";
+                $sqlmain = "select * from student order by pid desc";
             }
 
 
@@ -313,7 +313,7 @@
 
         $id = $_GET["id"];
         $action = $_GET["action"];
-        $sqlmain = "select * from patient where pid='$id'";
+        $sqlmain = "select * from student where pid='$id'";
         $result = $database->query($sqlmain);
         $row = $result->fetch_assoc();
         $name = $row["pname"];

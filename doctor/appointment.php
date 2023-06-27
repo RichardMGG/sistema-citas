@@ -43,7 +43,7 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from adviser where docemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid = $userfetch["docid"];
     $username = $userfetch["docname"];
@@ -143,7 +143,7 @@
                         $today = date('Y-m-d');
                         echo $today;
 
-                        $list110 = $database->query("select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ");
+                        $list110 = $database->query("select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.pid=appointment.pid inner join adviser on schedule.docid=adviser.docid  where  adviser.docid=$userid ");
 
                         ?>
                     </p>
@@ -205,7 +205,7 @@
             <?php
 
 
-            $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ";
+            $sqlmain = "select appointment.appoid,schedule.scheduleid,schedule.title,adviser.docname,student.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.pid=appointment.pid inner join adviser on schedule.docid=adviser.docid  where  adviser.docid=$userid ";
 
             if ($_POST) {
                 //print_r($_POST);
@@ -401,7 +401,7 @@
                                     <option value="" disabled selected hidden>Escoger Doctor de la Lista</option><br/>';
 
 
-            $list11 = $database->query("select  * from  doctor;");
+            $list11 = $database->query("select  * from  adviser;");
 
             for ($y = 0; $y < $list11->num_rows; $y++) {
                 $row00 = $list11->fetch_assoc();
@@ -514,7 +514,7 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from doctor where docid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
             $name = $row["docname"];
