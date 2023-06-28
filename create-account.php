@@ -71,7 +71,7 @@
                 $_SESSION["usertype"] = "p";
                 $_SESSION["username"] = $fname;
 
-                header('Location: patient/index.php');
+                header('Location: student/index.php');
                 $error = '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>';
             }
         } else {

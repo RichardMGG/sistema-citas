@@ -139,7 +139,7 @@
                 <td>
                     <form action="schedule.php" method="post" class="header-search">
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda Doctor, Nombre, Correo, Fecha (YYYY-MM-DD)" list="doctors">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Búsqueda Personal, Nombre, Correo, Fecha (YYYY-MM-DD)" list="doctors">&nbsp;&nbsp;
 
                         <?php
                         echo '<datalist id="doctors">';

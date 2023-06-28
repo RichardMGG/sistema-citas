@@ -38,7 +38,7 @@
     session_start();
 
     if (isset($_SESSION["user"])) {
-        if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'p') {
+        if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'd') {
             header("location: ../login.php");
         } else {
             $useremail = $_SESSION["user"];
@@ -50,10 +50,14 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from student where pemail='$useremail'");
+    $userrow = $database->query("select * from adviser where docemail='$useremail'");
     $userfetch = $userrow->fetch_assoc();
-    $userid = $userfetch["pid"];
-    $username = $userfetch["pname"];
+    $userid = $userfetch["docid"];
+    $username = $userfetch["docname"];
+
+
+    //echo $userid;
+    //echo $username;
 
     ?>
     <div class="container">
@@ -78,10 +82,9 @@
                             </tr>
                         </table>
                     </td>
-
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-home ">
+                    <td class="menu-btn menu-icon-dashbord">
                         <a href="index.php" class="non-style-link-menu ">
                             <div>
                                 <p class="menu-text">Inicio</p>
@@ -90,10 +93,10 @@
         </td>
         </tr>
         <tr class="menu-row">
-            <td class="menu-btn menu-icon-doctor">
-                <a href="doctors.php" class="non-style-link-menu">
+            <td class="menu-btn menu-icon-appoinment">
+                <a href="appointment.php" class="non-style-link-menu">
                     <div>
-                        <p class="menu-text">Personal</p>
+                        <p class="menu-text">Mis Citas</p>
                 </a>
     </div>
     </td>
@@ -103,22 +106,22 @@
         <td class="menu-btn menu-icon-session">
             <a href="schedule.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Citas</p>
+                    <p class="menu-text">Mis Sesiones</p>
                 </div>
             </a>
         </td>
     </tr>
     <tr class="menu-row">
-        <td class="menu-btn menu-icon-appoinment">
-            <a href="appointment.php" class="non-style-link-menu">
+        <td class="menu-btn menu-icon-patient">
+            <a href="student.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Mis Reservas</p>
+                    <p class="menu-text">Mis Alumnos</p>
             </a></div>
         </td>
     </tr>
     <tr class="menu-row">
         <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
-            <a href="settings.php" class="non-style-link-menu  non-style-link-menu-active">
+            <a href="settings.php" class="non-style-link-menu non-style-link-menu-active">
                 <div>
                     <p class="menu-text">Configuración</p>
             </a></div>
@@ -190,7 +193,7 @@
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
-                                                    Edita la información de tu Cuenta y Cambia la Contraseña
+                                                    Edite los detalles de su cuenta y cambie la contraseña
                                                 </div>
                                             </div>
 
@@ -212,11 +215,11 @@
                                             <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
                                             <div>
                                                 <div class="h1-dashboard">
-                                                    Ver Información de tu Cuenta
+                                                    Ver Información de Cuenta
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
-                                                    Ver la información personal de tu cuenta
+                                                    Ver información personal sobre su cuenta
                                                 </div>
                                             </div>
 
@@ -241,7 +244,7 @@
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
-                                                    Se eliminará permanentemente su cuenta
+                                                    Se eliminará permanentemente tu Cuenta
                                                 </div>
                                             </div>
 
@@ -272,11 +275,11 @@
                         <h2>Estás segur@?</h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                        Deseas eliminar tu cuenta<br>(' . substr($nameget, 0, 40) . ').
+                            Deseas borrar este registro<br>(' . substr($nameget, 0, 40) . ').
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
-                        <a href="delete-account.php?id=' . $id . '" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Si&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
+                        <a href="delete-adviser.php?id=' . $id . '" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Si&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
                         <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
 
                         </div>
@@ -285,17 +288,18 @@
             </div>
             ';
         } elseif ($action == 'view') {
-            $sqlmain = "select * from student where pid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
-            $name = $row["pname"];
-            $email = $row["pemail"];
-            $address = $row["paddress"];
+            $name = $row["docname"];
+            $email = $row["docemail"];
+            $spe = $row["specialties"];
 
-
-            $dob = $row["pdob"];
-            $nic = $row['pnic'];
-            $tele = $row['ptel'];
+            $spcil_res = $database->query("select sname from specialties where id='$spe'");
+            $spcil_array = $spcil_res->fetch_assoc();
+            $spcil_name = $spcil_array["sname"];
+            $nic = $row['docnic'];
+            $tele = $row['doctel'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -311,7 +315,7 @@
                         
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Ver Información</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Ver Detalles</p><br><br>
                                 </td>
                             </tr>
                             
@@ -339,7 +343,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">Documento de Identificación: </label>
+                                    <label for="nic" class="form-label">DNI: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -349,7 +353,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Teléfono:: </label>
+                                    <label for="Tele" class="form-label">Teléfono: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -359,24 +363,13 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Dirección: </label>
+                                    <label for="spec" class="form-label">Especialidad: </label>
                                     
                                 </td>
                             </tr>
                             <tr>
                             <td class="label-td" colspan="2">
-                            ' . $address . '<br><br>
-                            </td>
-                            </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Fecha de Nacimiento: </label>
-                                    
-                                </td>
-                            </tr>
-                            <tr>
-                            <td class="label-td" colspan="2">
-                            ' . $dob . '<br><br>
+                            ' . $spcil_name . '<br><br>
                             </td>
                             </tr>
                             <tr>
@@ -397,22 +390,23 @@
             </div>
             ';
         } elseif ($action == 'edit') {
-            $sqlmain = "select * from student where pid='$id'";
+            $sqlmain = "select * from adviser where docid='$id'";
             $result = $database->query($sqlmain);
             $row = $result->fetch_assoc();
-            $name = $row["pname"];
-            $email = $row["pemail"];
+            $name = $row["docname"];
+            $email = $row["docemail"];
+            $spe = $row["specialties"];
 
-
-
-            $address = $row["paddress"];
-            $nic = $row['pnic'];
-            $tele = $row['ptel'];
+            $spcil_res = $database->query("select sname from specialties where id='$spe'");
+            $spcil_array = $spcil_res->fetch_assoc();
+            $spcil_name = $spcil_array["sname"];
+            $nic = $row['docnic'];
+            $tele = $row['doctel'];
 
             $error_1 = $_GET["error"];
             $errorlist = array(
-                '1' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Ya existe una cuenta relacionada con esta dirección de correo electrónico</label>',
-                '2' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">¡Error de confirmación de contraseña! Reconfirmar contraseña</label>',
+                '1' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>',
+                '2' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Password Conformation Error! Reconform Password</label>',
                 '3' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>',
                 '4' => "",
                 '0' => '',
@@ -436,13 +430,13 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Usuario</p>
-                                        User ID : ' . $id . ' (Auto Generado)<br><br>
+                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Doctor</p>
+                                        Doctor ID : ' . $id . ' (Auto Generado)<br><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <form action="edit-user.php" method="POST" class="add-new-form">
+                                            <form action="edit-doc.php" method="POST" class="add-new-form">
                                             <label for="Email" class="form-label">Correo: </label>
                                             <input type="hidden" value="' . $id . '" name="id00">
                                         </td>
@@ -450,7 +444,7 @@
                                     <tr>
                                         <td class="label-td" colspan="2">
                                         <input type="hidden" name="oldemail" value="' . $email . '" >
-                                        <input type="email" name="email" class="input-text" placeholder="Dirección de Correo" value="' . $email . '" required><br>
+                                        <input type="email" name="email" class="input-text" placeholder="Email Address" value="' . $email . '" required><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -461,14 +455,14 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Nombre de Doctor" value="' . $name . '" required><br>
+                                            <input type="text" name="name" class="input-text" placeholder="Nombre Personal" value="' . $name . '" required><br>
                                         </td>
                                         
                                     </tr>
                                     
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="nic" class="form-label">Documento de Identificación: </label>
+                                            <label for="nic" class="form-label">DNI: </label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -478,23 +472,38 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="Tele" class="form-label">Teléfono:: </label>
+                                            <label for="Tele" class="form-label">Teléfono: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="tel" name="Tele" class="input-text" placeholder="Número de Teléfono:" value="' . $tele . '" required><br>
+                                            <input type="tel" name="Tele" class="input-text" placeholder="Teléfono Móvil" value="' . $tele . '" required><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Dirección</label>
+                                            <label for="spec" class="form-label">Escoger Especialidad: (Actual ' . $spcil_name . ')</label>
                                             
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                        <input type="text" name="address" class="input-text" placeholder="Dirección" value="' . $address . '" required><br>
+                                            <select name="spec" id="" class="box">';
+
+
+                $list11 = $database->query("select  * from  specialties;");
+
+                for ($y = 0; $y < $list11->num_rows; $y++) {
+                    $row00 = $list11->fetch_assoc();
+                    $sn = $row00["sname"];
+                    $id00 = $row00["id"];
+                    echo "<option value=" . $id00 . ">$sn</option><br/>";
+                };
+
+
+
+
+                echo     '       </select><br><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -504,16 +513,16 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="password" class="input-text" placeholder="Escribe una contraseña" required><br>
+                                            <input type="password" name="password" class="input-text" placeholder="Definir una Contraseña" required><br>
                                         </td>
                                     </tr><tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="cpassword" class="form-label">Confirma Contraseña: </label>
+                                            <label for="cpassword" class="form-label">Confirmar Contraseña: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="cpassword" class="input-text" placeholder="Confirma Contraseña" required><br>
+                                            <input type="password" name="cpassword" class="input-text" placeholder="Confirmar Contraseña" required><br>
                                         </td>
                                     </tr>
                                     
@@ -543,7 +552,7 @@
                         <div class="popup">
                         <center>
                         <br><br><br><br>
-                            <h2>Edición Exitosa!</h2>
+                            <h2>Edición Exitosa</h2>
                             <a class="close" href="settings.php">&times;</a>
                             <div class="content">
                             Si cambia su correo electrónico también, cierre la sesión y vuelva a iniciar sesión con su nuevo correo electrónico
