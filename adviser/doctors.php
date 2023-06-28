@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.ico">
 
-    <title>Asesores</title>
+    <title>Doctores</title>
     <style>
         .popup {
             animation: transitionIn-Y-bottom 0.5s;
@@ -31,7 +30,9 @@
 
     if (isset($_SESSION["user"])) {
         if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'a') {
-            header("location: ../login.php");
+            //header("location: ../login.php");
+        } else {
+            $useremail = $_SESSION["user"];
         }
     } else {
         header("location: ../login.php");
@@ -55,8 +56,8 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">Senati</p>
-                                    <p class="profile-subtitle">www.senati.edu.pe</p>
+                                    <p class="profile-title">ConfiguroWeb</p>
+                                    <p class="profile-subtitle">configuroweb.com</p>
                                 </td>
                             </tr>
                             <tr>
@@ -79,9 +80,9 @@
         </tr>
         <tr class="menu-row">
             <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                <a href="adviser.php" class="non-style-link-menu non-style-link-menu-active">
+                <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active">
                     <div>
-                        <p class="menu-text">Personal</p>
+                        <p class="menu-text">Doctores</p>
                 </a>
     </div>
     </td>
@@ -99,7 +100,7 @@
         <td class="menu-btn menu-icon-appoinment">
             <a href="appointment.php" class="non-style-link-menu">
                 <div>
-                    <p class="menu-text">Cita</p>
+                    <p class="menu-text">Citas</p>
             </a></div>
         </td>
     </tr>
@@ -118,7 +119,7 @@
         <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
             <tr>
                 <td width="13%">
-                    <a href="index.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
+                    <a href="doctors.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
                             <font class="tn-in-text">Volver</font>
                         </button></a>
                 </td>
@@ -171,7 +172,7 @@
 
             <tr>
                 <td colspan="2" style="padding-top:30px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Agregar Nuevo Asesor</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Agregar Nuevo Doctor</p>
                 </td>
                 <td colspan="2">
                     <a href="?action=add&id=none&error=0" class="non-style-link"><button class="login-btn btn-primary btn button-icon" style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">Agregar Nuevo</font></button>
@@ -180,7 +181,7 @@
             </tr>
             <tr>
                 <td colspan="4" style="padding-top:10px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Asesores (<?php echo $list11->num_rows; ?>)</p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Doctores (<?php echo $list11->num_rows; ?>)</p>
                 </td>
 
             </tr>
@@ -207,7 +208,7 @@
                                         <th class="table-headin">
 
 
-                                            Nombre
+                                            Nombre Doctor
 
                                         </th>
                                         <th class="table-headin">
@@ -215,7 +216,7 @@
                                         </th>
                                         <th class="table-headin">
 
-                                            Area
+                                            Especialidad
 
                                         </th>
                                         <th class="table-headin">
@@ -240,7 +241,7 @@
                                     
                                     <br>
                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="adviser.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los Asesores &nbsp;</font></button>
+                                    <a class="non-style-link" href="doctors.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todos los Doctores &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -257,13 +258,13 @@
                                             $spcil_array = $spcil_res->fetch_assoc();
                                             $spcil_name = $spcil_array["sname"];
                                             echo '<tr>
-                                        <td style="text-align:center;"> &nbsp;' .
+                                        <td> &nbsp;' .
                                                 substr($name, 0, 30)
                                                 . '</td>
-                                        <td style="text-align:center;">
+                                        <td>
                                         ' . substr($email, 0, 20) . '
                                         </td>
-                                        <td style="text-align:center;">
+                                        <td>
                                             ' . substr($spcil_name, 0, 20) . '
                                         </td>
 
@@ -273,7 +274,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="?action=view&id=' . $docid . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Ver</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id=' . $docid . '&name=' . $name . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Eliminar</font></button></a>
+                                       <a href="?action=drop&id=' . $docid . '&name=' . $name . '" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Remove</font></button></a>
                                         </div>
                                         </td>
                                     </tr>';
@@ -307,14 +308,14 @@
                     <div class="popup">
                     <center>
                         <h2>Estás segur@?</h2>
-                        <a class="close" href="adviser.php">&times;</a>
+                        <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
                             Deseas borrar este registro<br>(' . substr($nameget, 0, 40) . ').
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
                         <a href="delete-adviser.php?id=' . $id . '" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Si&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
+                        <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
 
                         </div>
                     </center>
@@ -339,9 +340,9 @@
                     <div class="popup">
                     <center>
                         <h2></h2>
-                        <a class="close" href="adviser.php">&times;</a>
+                        <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
-                            Asesor<br>
+                            ConfiguroWeb<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
@@ -397,7 +398,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Area: </label>
+                                    <label for="spec" class="form-label">Especialidad: </label>
                                     
                                 </td>
                             </tr>
@@ -408,7 +409,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="adviser.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                    <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                 
                                     
                                 </td>
@@ -439,7 +440,7 @@
                     <div class="popup">
                     <center>
                     
-                        <a class="close" href="adviser.php">&times;</a> 
+                        <a class="close" href="doctors.php">&times;</a> 
                         <div style="display: flex;justify-content: center;">
                         <div class="abc">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -450,32 +451,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Agregar Nuevo Asesor.</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Agregar Nuevo Doctor.</p><br><br>
                                 </td>
                             </tr>
                             
                             <tr>
                                 <form action="add-new.php" method="POST" class="add-new-form">
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">DNI: </label>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <input type="text" name="nic" id="nic" class="input-text" placeholder="Número de Documento" required style="width: 50%; display: inline;">
-                                    <input type="button" id="consultaReniec" name="consultaReniec" value="Reniec" class="btn-primary btn">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Nombre: </label>   
+                                    <label for="name" class="form-label">Nombre: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="name" id="name" class="input-text" placeholder="Nombre Asesor" required><br>
+                                    <input type="text" name="name" class="input-text" placeholder="Nombre Doctor" required><br>
                                 </td>
                                 
                             </tr>
@@ -489,8 +477,16 @@
                                     <input type="email" name="email" class="input-text" placeholder="Email Address" required><br>
                                 </td>
                             </tr>
-                            
-
+                            <tr>
+                                <td class="label-td" colspan="2">
+                                    <label for="nic" class="form-label">DNI: </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label-td" colspan="2">
+                                    <input type="text" name="nic" class="input-text" placeholder="Número de Documento" required><br>
+                                </td>
+                            </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <label for="Tele" class="form-label">Teléfono: </label>
@@ -503,7 +499,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Escoge Especialidad: </label>
+                                    <label for="spec" class="form-label">Escoger Especialidad: </label>
                                     
                                 </td>
                             </tr>
@@ -512,7 +508,7 @@
                                     <select name="spec" id="" class="box" >';
 
 
-                $list11 = $database->query("select  * from  specialties order by sname asc;");
+                $list11 = $database->query("select  * from  specialties;");
 
                 for ($y = 0; $y < $list11->num_rows; $y++) {
                     $row00 = $list11->fetch_assoc();
@@ -552,7 +548,7 @@
                                 <td colspan="2">
                                     <input type="reset" value="Resetear" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
-                                    <input type="submit" value="Resgistrar" class="login-btn btn-primary btn">
+                                    <input type="submit" value="Add" class="login-btn btn-primary btn">
                                 </td>
                 
                             </tr>
@@ -574,14 +570,14 @@
                             <center>
                             <br><br><br><br>
                                 <h2>Nuevo Registro Añadido Exitosamente</h2>
-                                <a class="close" href="adviser.php">&times;</a>
+                                <a class="close" href="doctors.php">&times;</a>
                                 <div class="content">
                                     
                                     
                                 </div>
                                 <div style="display: flex;justify-content: center;">
                                 
-                                <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
+                                <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
 
                                 </div>
                                 <br><br>
@@ -620,7 +616,7 @@
                             <div class="popup">
                             <center>
                             
-                                <a class="close" href="adviser.php">&times;</a> 
+                                <a class="close" href="advisers.php">&times;</a> 
                                 <div style="display: flex;justify-content: center;">
                                 <div class="abc">
                                 <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -631,8 +627,8 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de </p>
-                                        Asesor ID : ' . $id . ' (Auto Generado)<br><br>
+                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Editar Información de Doctor</p>
+                                        Doctor ID : ' . $id . ' (Auto Generado)<br><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -640,7 +636,6 @@
                                             <form action="edit-doc.php" method="POST" class="add-new-form">
                                             <label for="Email" class="form-label">Correo: </label>
                                             <input type="hidden" value="' . $id . '" name="id00">
-                                            <input type="hidden" name="oldemail" value="' . $email . '" >
                                         </td>
                                     </tr>
                                     <tr>
@@ -656,7 +651,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Nombre Asesor" value="' . $name . '" required><br>
+                                            <input type="text" name="name" class="input-text" placeholder="Nombre Doctor" value="' . $name . '" required><br>
                                         </td>
                                         
                                     </tr>
@@ -754,14 +749,14 @@
                         <center>
                         <br><br><br><br>
                             <h2>Edición Exitosa</h2>
-                            <a class="close" href="adviser.php">&times;</a>
+                            <a class="close" href="doctors.php">&times;</a>
                             <div class="content">
                                 
                                 
                             </div>
                             <div style="display: flex;justify-content: center;">
                             
-                            <a href="adviser.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
+                            <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
 
                             </div>
                             <br><br>
@@ -778,5 +773,4 @@
 
 </body>
 
-<script src="../js/api.js"></script>
 </html>
