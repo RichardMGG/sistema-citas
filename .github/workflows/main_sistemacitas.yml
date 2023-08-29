@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'sistemacitas'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A778BB8DD23C4AD889235FBA6B6C4FE9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6AD89D7AF65436183B2634C9714F671 }}
           package: .
